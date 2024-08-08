@@ -82,7 +82,7 @@ class DataOps(object):
         current_key = None
         for key in keys:
             if current_key:
-                pointer = pointer[current_key]
+                pointer = pointer[current_key] if isinstance(pointer[current_key], dict) else {pointer[current_key]: {}}
             current_key = key
             if key not in pointer:
                 pointer[key] = {}
