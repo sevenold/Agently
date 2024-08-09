@@ -13,7 +13,7 @@ class NamespaceOps(object):
             elif isinstance(input, list):
                 return self.extend(input)
             else:
-                return self.set(input)
+                return self.update(input, {})
         if input and desc != None:
             current_content = self.get(input)
             if isinstance(current_content, list):
@@ -82,7 +82,7 @@ class DataOps(object):
         current_key = None
         for key in keys:
             if current_key:
-                pointer = pointer[current_key] if isinstance(pointer[current_key], dict) else {pointer[current_key]: {}}
+                pointer = pointer[current_key]
             current_key = key
             if key not in pointer:
                 pointer[key] = {}
